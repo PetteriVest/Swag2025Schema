@@ -10,7 +10,6 @@
     background: #f5f5f5;
     padding: 20px;
   }
-
   h1 {
     text-align: center;
     margin-bottom: 20px;
@@ -22,7 +21,6 @@
     gap: 10px;
     flex-wrap: wrap;
   }
-
   .column {
     flex: 1;
     min-width: 250px;
@@ -32,20 +30,17 @@
     padding: 10px;
     position: relative;
   }
-
   .column h2 {
     text-align: center;
     border-bottom: 1px solid #ddd;
     padding-bottom: 5px;
   }
-
   .time-grid {
     position: relative;
     height: 960px; /* 16 timmar (08–24) à 60px */
     border-left: 1px solid #ccc;
     margin-top: 10px;
   }
-
   .time-label {
     position: absolute;
     left: -45px;
@@ -65,9 +60,8 @@
     min-height: 25px;
     overflow: hidden;
     user-select: none;
-    width: 24%; /* plats för 4 parallella aktiviteter */
+    width: 24%;
   }
-
   .box:active {
     cursor: grabbing;
   }
@@ -83,101 +77,80 @@
     border-radius: 0 0 8px 8px;
   }
 
-  #addBox {
-    display: block;
-    margin: 20px auto;
+  .button-row {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+  }
+
+  .addBtn {
     padding: 10px 15px;
-    background: #4c9aff;
-    color: white;
     border: none;
+    color: white;
+    font-weight: bold;
     border-radius: 8px;
     cursor: pointer;
   }
-  
-  .button-row {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin: 20px 0;
+
+  .externBtn { background: #2ecc71; }
+  .workshopBtn { background: #e67e22; }
+  .forelasningBtn { background: #9b59b6; }
+  .aktivitetBtn { background: #4c9aff; }
+  .middagBtn { background: pink; }
+
+  #deletePanel {
+    background: #fff;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 15px;
+    margin-top: 20px;
+    width: 300px;
+  }
+  #deletePanel h3 {
+    margin-top: 0;
+    text-align: center;
+  }
+  #deleteList div {
+    padding: 8px;
+    background: #f2f2f2;
+    border-radius: 6px;
+    margin-bottom: 6px;
+    cursor: pointer;
+  }
+  #deleteList div:hover {
+    background: #e74c3c;
+    color: white;
   }
 
-.addBtn {
-  padding: 10px 15px;
-  border: none;
-  color: white;
-  font-weight: bold;
-  border-radius: 8px;
-  cursor: pointer;
-}
+  /* Sync panel */
+  #syncPanel {
+    background: #fff;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 15px;
+    margin-top: 20px;
+    width: 300px;
+  }
 
-.externBtn {
-  background: #2ecc71; /* grön */
-}
-
-.workshopBtn {
-  background: #e67e22; /* orange */
-}
-
-.forelasningBtn {
-  background: #9b59b6; /* lila */
-}
-.aktivitetBtn {
-  background: #4c9aff; /* blå */
-}
-
-.middagBtn {
-  background: pink; /* rosa */
-}
-#deletePanel {
-  background: #fff;
-  border: 2px solid #ccc;
-  border-radius: 10px;
-  padding: 15px;
-  margin-top: 20px;
-  width: 300px;
-}
-
-#deletePanel h3 {
-  margin-top: 0;
-  text-align: center;
-}
-
-#deleteList div {
-  padding: 8px;
-  background: #f2f2f2;
-  border-radius: 6px;
-  margin-bottom: 6px;
-  cursor: pointer;
-}
-
-#deleteList div:hover {
-  background: #e74c3c;
-  color: white;
-}
-
+  #lastSaved {
+    margin-top: 5px;
+    font-size: 14px;
+    color: #777;
+  }
 </style>
 </head>
 <body>
 
 <h1>Schemaläggning med 4 parallella aktiviteter</h1>
+
 <div class="timetable">
-  <div class="column" id="thursday">
-    <h2>Torsdag</h2>
-    <div class="time-grid" id="grid-thursday"></div>
-  </div>
-  <div class="column" id="friday">
-    <h2>Fredag</h2>
-    <div class="time-grid" id="grid-friday"></div>
-  </div>
-  <div class="column" id="saturday">
-    <h2>Lördag</h2>
-    <div class="time-grid" id="grid-saturday"></div>
-  </div>
-  <div class="column" id="sunday">
-    <h2>Söndag</h2>
-    <div class="time-grid" id="grid-sunday"></div>
-  </div>
+  <div class="column"><h2>Torsdag</h2><div class="time-grid" id="grid-thursday"></div></div>
+  <div class="column"><h2>Fredag</h2><div class="time-grid" id="grid-friday"></div></div>
+  <div class="column"><h2>Lördag</h2><div class="time-grid" id="grid-saturday"></div></div>
+  <div class="column"><h2>Söndag</h2><div class="time-grid" id="grid-sunday"></div></div>
 </div>
+
 <div class="button-row">
   <button class="addBtn externBtn">Extern</button>
   <button class="addBtn workshopBtn">Workshop</button>
@@ -185,94 +158,97 @@
   <button class="addBtn aktivitetBtn">Aktivitet</button>
   <button class="addBtn middagBtn">Middag</button>
 </div>
+
 <div id="deletePanel">
   <h3>Radera aktivitet</h3>
   <div id="deleteList"></div>
 </div>
 
+<!-- GitHub Sync Panel -->
+<div id="syncPanel">
+  <h3>GitHub-synk</h3>
+
+  <label>GitHub Token:</label>
+  <input id="githubToken" type="password" placeholder="Klistra in token" style="width:100%;padding:6px;margin-bottom:10px;">
+
+  <button id="saveToGitHubBtn" style="width:100%;padding:10px;background:#4c9aff;color:white;border:none;border-radius:8px;cursor:pointer;">
+    Spara till GitHub
+  </button>
+
+  <button id="loadFromGitHubBtn" style="margin-top:10px;width:100%;padding:10px;background:#2ecc71;color:white;border:none;border-radius:8px;cursor:pointer;">
+    Ladda från GitHub
+  </button>
+
+  <div id="githubStatus" style="margin-top:10px;color:#555;font-size:14px;"></div>
+  <div id="lastSaved">Senast sparad: –</div>
+</div>
 
 <script>
-  const addButton = document.getElementById("addBox");
-  const grids = document.querySelectorAll(".time-grid");
-  let boxCount = 1;
-  const startHour = 8;
-  const hourHeight = 60;
-  const trackWidth = 25; // 4 parallella kolumner (0–3)
+/* ---------------------------------------------------------
+   DINA BEFINTLIGA VARIABLER & FUNKTIONER
+--------------------------------------------------------- */
 
-  // --- Rita tidsskala ---
-  grids.forEach(grid => {
-    for (let h = startHour; h <= 24; h++) {
-      const label = document.createElement("div");
-      label.className = "time-label";
-      label.textContent = `${String(h).padStart(2, '0')}:00`;
-      label.style.top = `${(h - startHour) * hourHeight - 6}px`;
-      grid.appendChild(label);
+const grids = document.querySelectorAll(".time-grid");
+const startHour = 8;
+const hourHeight = 60;
+const trackWidth = 25;
 
-      const line = document.createElement("div");
-      line.style.position = "absolute";
-      line.style.top = `${(h - startHour) * hourHeight}px`;
-      line.style.left = "0";
-      line.style.right = "0";
-      line.style.height = "1px";
-      line.style.background = "#ddd";
-      grid.appendChild(line);
-    }
-  });
+/* ----- Rita tidsskala ----- */
+grids.forEach(grid => {
+  for (let h = startHour; h <= 24; h++) {
+    const label = document.createElement("div");
+    label.className = "time-label";
+    label.textContent = `${String(h).padStart(2, '0')}:00`;
+    label.style.top = `${(h - startHour) * hourHeight - 6}px`;
+    grid.appendChild(label);
 
-  // --- Ladda sparat schema ---
-  document.addEventListener("DOMContentLoaded", () => {
-    const saved = JSON.parse(localStorage.getItem("timetableDataV3") || "{}");
-    Object.keys(saved).forEach(day => {
-      const grid = document.getElementById(`grid-${day}`);
-      saved[day].forEach(item => {
-        const newBox = createBox(item.text, item.top, item.height, item.track);
-		if (item.color) newBox.style.background = item.color;
-        grid.appendChild(newBox);
-      });
+    const line = document.createElement("div");
+    line.style.position = "absolute";
+    line.style.top = `${(h - startHour) * hourHeight}px`;
+    line.style.left = "0";
+    line.style.right = "0";
+    line.style.height = "1px";
+    line.style.background = "#ddd";
+    grid.appendChild(line);
+  }
+});
+
+/* ----- Ladda från localStorage ----- */
+document.addEventListener("DOMContentLoaded", () => {
+  const saved = JSON.parse(localStorage.getItem("timetableDataV3") || "{}");
+  Object.keys(saved).forEach(day => {
+    const grid = document.getElementById(`grid-${day}`);
+    saved[day].forEach(item => {
+      const newBox = createBox(item.text, item.top, item.height, item.track, item.color);
+      grid.appendChild(newBox);
     });
   });
-
-  // --- Lägg till ny aktivitet ---
-  document.querySelector(".externBtn").addEventListener("click", () => {
-  const box = createBox("Extern aktivitet");
-  box.style.background = "#2ecc71";
-  document.getElementById("grid-thursday").appendChild(box);
-  saveTimetable();
   updateDeletePanel();
 });
 
-document.querySelector(".workshopBtn").addEventListener("click", () => {
-  const box = createBox("Workshop");
-  box.style.background = "#e67e22";
-  document.getElementById("grid-thursday").appendChild(box);
-  saveTimetable();
-  updateDeletePanel();
-});
+/* ----- Skapa box ----- */
+function createBox(text, top = 0, height = 60, track = 0, color = null) {
+  const box = document.createElement("div");
+  box.classList.add("box");
+  box.textContent = text;
+  box.draggable = true;
+  box.style.top = top + "px";
+  box.style.left = (track * trackWidth) + "%";
+  box.style.height = height + "px";
+  if (color) box.style.background = color;
 
-document.querySelector(".forelasningBtn").addEventListener("click", () => {
-  const box = createBox("Föreläsning");
-  box.style.background = "#9b59b6";
-  document.getElementById("grid-thursday").appendChild(box);
-  saveTimetable();
-  updateDeletePanel();
-});
+  const handle = document.createElement("div");
+  handle.classList.add("resize-handle");
+  box.appendChild(handle);
 
-document.querySelector(".aktivitetBtn").addEventListener("click", () => {
-  const box = createBox("Aktivitet");
-  box.style.background = "#4c9aff";
-  document.getElementById("grid-thursday").appendChild(box);
-  saveTimetable();
-  updateDeletePanel();
-});
+  addDragEvents(box);
+  addResizeEvents(box, handle);
+  addEditEvents(box);
 
-document.querySelector(".middagBtn").addEventListener("click", () => {
-  const box = createBox("Middag");
-  box.style.background = "pink";
-  document.getElementById("grid-thursday").appendChild(box);
-  saveTimetable();
-  updateDeletePanel();
-});
+  return box;
+}
 
+/* ----- Radera panel ----- */
 function updateDeletePanel() {
   const deleteList = document.getElementById("deleteList");
   deleteList.innerHTML = "";
@@ -283,161 +259,242 @@ function updateDeletePanel() {
     const entry = document.createElement("div");
     entry.textContent = box.textContent.trim() || `Aktivitet ${index+1}`;
     entry.addEventListener("click", () => {
-	  let text = "Press OK to delete activity.";
-      if (confirm(text) == true) {
-	    box.remove();
-		saveTimetable();
-		updateDeletePanel();
-	  }
+      if (confirm("Press OK to delete activity.")) {
+        box.remove();
+        saveTimetable();
+        updateDeletePanel();
+      }
     });
     deleteList.appendChild(entry);
   });
 }
 
-  function createBox(text, top = 0, height = 60, track = 0, color = null) {
-    const box = document.createElement("div");
-    box.classList.add("box");
-    box.textContent = text;
-    box.draggable = true;
-    box.style.top = top + "px";
-    box.style.left = (track * trackWidth) + "%";
-    box.style.height = height + "px";
+/* ----- Lägga till nya boxar ----- */
+document.querySelector(".externBtn").onclick = () => addNewBox("Extern aktivitet", "#2ecc71");
+document.querySelector(".workshopBtn").onclick = () => addNewBox("Workshop", "#e67e22");
+document.querySelector(".forelasningBtn").onclick = () => addNewBox("Föreläsning", "#9b59b6");
+document.querySelector(".aktivitetBtn").onclick = () => addNewBox("Aktivitet", "#4c9aff");
+document.querySelector(".middagBtn").onclick = () => addNewBox("Middag", "pink");
 
-    if (color) {
-        box.style.background = color;
-    }
-
-    const handle = document.createElement("div");
-    handle.classList.add("resize-handle");
-    box.appendChild(handle);
-
-    addDragEvents(box);
-    addResizeEvents(box, handle);
-    addEditEvents(box);
-
-    return box;
+function addNewBox(text, color) {
+  const box = createBox(text, 0, 60, 0, color);
+  document.getElementById("grid-thursday").appendChild(box);
+  saveTimetable();
+  updateDeletePanel();
 }
 
+/* ----- Drag ----- */
+function addDragEvents(box) {
+  let offsetY = 0, offsetX = 0;
 
-  // --- Dra aktivitet ---
-  function addDragEvents(box) {
-    let offsetY = 0, offsetX = 0;
-
-    box.addEventListener("dragstart", (e) => {
-      e.dataTransfer.effectAllowed = "move";
-      offsetY = e.offsetY;
-      offsetX = e.offsetX;
-      setTimeout(() => box.classList.add("dragging"), 0);
-    });
-
-    box.addEventListener("dragend", () => {
-      box.classList.remove("dragging");
-      saveTimetable();
-	  updateDeletePanel();
-    });
-  }
-
-  grids.forEach(grid => {
-    grid.addEventListener("dragover", (e) => {
-      e.preventDefault();
-      const dragging = document.querySelector(".dragging");
-      if (!dragging) return;
-
-      const rect = grid.getBoundingClientRect();
-      let y = e.clientY - rect.top - 48;
-      y = Math.max(0, Math.min(y, grid.clientHeight - dragging.clientHeight));
-
-      // beräkna spår (0–3)
-      let x = e.clientX - rect.left;
-      const track = Math.min(3, Math.max(0, Math.floor((x / rect.width) * 4)));
-
-      dragging.style.top = `${y}px`;
-      dragging.style.left = `${track * trackWidth}%`;
-
-      if (dragging.parentElement !== grid) grid.appendChild(dragging);
-    });
-
-    grid.addEventListener("drop", (e) => {
-      e.preventDefault();
-      const dragging = document.querySelector(".dragging");
-      if (dragging) dragging.classList.remove("dragging");
-      saveTimetable();
-    });
+  box.addEventListener("dragstart", (e) => {
+    e.dataTransfer.effectAllowed = "move";
+    offsetY = e.offsetY;
+    offsetX = e.offsetX;
+    setTimeout(() => box.classList.add("dragging"), 0);
   });
 
-  // --- Ändra höjd (tid) ---
-  function addResizeEvents(box, handle) {
-    let isResizing = false;
-    let startY, startHeight;
+  box.addEventListener("dragend", () => {
+    box.classList.remove("dragging");
+    saveTimetable();
+    updateDeletePanel();
+  });
+}
 
-    handle.addEventListener("mousedown", (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      isResizing = true;
-      startY = e.clientY;
-      startHeight = parseInt(box.style.height);
-      document.body.style.userSelect = "none";
+grids.forEach(grid => {
+  grid.addEventListener("dragover", (e) => {
+    e.preventDefault();
+    const dragging = document.querySelector(".dragging");
+    if (!dragging) return;
+
+    const rect = grid.getBoundingClientRect();
+    let y = e.clientY - rect.top - 48;
+    y = Math.max(0, Math.min(y, grid.clientHeight - dragging.clientHeight));
+
+    let x = e.clientX - rect.left;
+    const track = Math.min(3, Math.max(0, Math.floor((x / rect.width) * 4)));
+
+    dragging.style.top = `${y}px`;
+    dragging.style.left = `${track * trackWidth}%`;
+
+    if (dragging.parentElement !== grid) grid.appendChild(dragging);
+  });
+
+  grid.addEventListener("drop", () => saveTimetable());
+});
+
+/* ----- Resize ----- */
+function addResizeEvents(box, handle) {
+  let isResizing = false;
+  let startY, startHeight;
+
+  handle.addEventListener("mousedown", (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    isResizing = true;
+    startY = e.clientY;
+    startHeight = parseInt(box.style.height);
+    document.body.style.userSelect = "none";
+  });
+
+  document.addEventListener("mousemove", (e) => {
+    if (!isResizing) return;
+    const newHeight = Math.max(30, startHeight + (e.clientY - startY));
+    box.style.height = newHeight + "px";
+  });
+
+  document.addEventListener("mouseup", () => {
+    if (isResizing) {
+      isResizing = false;
+      document.body.style.userSelect = "";
+      saveTimetable();
+    }
+  });
+}
+
+/* ----- Edit ----- */
+function addEditEvents(box) {
+  box.addEventListener("dblclick", () => {
+    const oldText = box.textContent.replace(/\s+$/, "");
+    const input = document.createElement("input");
+    input.type = "text";
+    input.value = oldText;
+    input.style.width = "90%";
+    box.textContent = "";
+    box.appendChild(input);
+    input.focus();
+
+    input.addEventListener("blur", () => {
+      box.textContent = input.value || oldText;
+      const handle = document.createElement("div");
+      handle.classList.add("resize-handle");
+      box.appendChild(handle);
+      addResizeEvents(box, handle);
+      saveTimetable();
     });
 
-    document.addEventListener("mousemove", (e) => {
-      if (!isResizing) return;
-      const newHeight = Math.max(30, startHeight + (e.clientY - startY));
-      box.style.height = newHeight + "px";
-    });
+    input.addEventListener("keydown", e => e.key === "Enter" && input.blur());
+  });
+}
 
-    document.addEventListener("mouseup", () => {
-      if (isResizing) {
-        isResizing = false;
-        document.body.style.userSelect = "";
-        saveTimetable();
-      }
-    });
-  }
+/* ----- Save to localStorage ----- */
+function saveTimetable() {
+  const data = {};
+  grids.forEach(grid => {
+    const boxes = grid.querySelectorAll(".box");
+    const id = grid.id.replace("grid-", "");
+    data[id] = Array.from(boxes).map(b => ({
+      text: b.textContent.trim(),
+      top: parseInt(b.style.top),
+      height: parseInt(b.style.height),
+      track: Math.round(parseFloat(b.style.left) / trackWidth),
+      color: b.style.background
+    }));
+  });
+  localStorage.setItem("timetableDataV3", JSON.stringify(data));
+}
 
-  // --- Redigera text ---
-  function addEditEvents(box) {
-    box.addEventListener("dblclick", () => {
-      const oldText = box.textContent.replace(/\s+$/, "");
-      const input = document.createElement("input");
-      input.type = "text";
-      input.value = oldText;
-      input.style.width = "90%";
-      box.textContent = "";
-      box.appendChild(input);
-      input.focus();
+/* ---------------------------------------------------------
+   GITHUB SYNC
+--------------------------------------------------------- */
+const GITHUB_USER = "PetteriVest";
+const GITHUB_REPO = "Swag2025Schema";
+const GITHUB_FILE = "data.json";
 
-      input.addEventListener("blur", () => {
-        box.textContent = input.value || oldText;
-        const handle = document.createElement("div");
-        handle.classList.add("resize-handle");
-        box.appendChild(handle);
-        addResizeEvents(box, handle);
-        saveTimetable();
+let lastSha = null;
+
+/* ---- Load from GitHub ---- */
+async function loadFromGitHub() {
+  const token = document.getElementById("githubToken").value.trim();
+  if (!token) return alert("Du måste ange token.");
+
+  document.getElementById("githubStatus").textContent = "Laddar...";
+  const url = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${GITHUB_FILE}`;
+
+  try {
+    const res = await fetch(url, { headers: { Authorization: `Bearer ${token}` } });
+
+    if (res.status === 404) {
+      document.getElementById("githubStatus").textContent = "Filen finns inte på GitHub.";
+      return;
+    }
+
+    const file = await res.json();
+    lastSha = file.sha;
+
+    const decoded = JSON.parse(atob(file.content));
+
+    grids.forEach(g => g.innerHTML = "");
+
+    localStorage.setItem("timetableDataV3", JSON.stringify(decoded));
+
+    Object.keys(decoded).forEach(day => {
+      const grid = document.getElementById(`grid-${day}`);
+      decoded[day].forEach(item => {
+        const box = createBox(item.text, item.top, item.height, item.track, item.color);
+        grid.appendChild(box);
       });
-
-      input.addEventListener("keydown", (e) => {
-        if (e.key === "Enter") input.blur();
-      });
     });
+
+    updateDeletePanel();
+
+    document.getElementById("githubStatus").textContent = "Data laddad!";
+    document.getElementById("lastSaved").textContent = "Senast sparad: Hämtad från GitHub";
+
+  } catch (err) {
+    console.error(err);
+    document.getElementById("githubStatus").textContent = "Fel vid laddning.";
+  }
+}
+
+/* ---- Save to GitHub ---- */
+async function saveToGitHub() {
+  const token = document.getElementById("githubToken").value.trim();
+  if (!token) return alert("Du måste ange token.");
+
+  document.getElementById("githubStatus").textContent = "Sparar...";
+
+  const data = JSON.stringify(JSON.parse(localStorage.getItem("timetableDataV3") || "{}"), null, 2);
+  const url = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${GITHUB_FILE}`;
+
+  if (!lastSha) {
+    const res = await fetch(url, { headers: { Authorization: `Bearer ${token}` } });
+    if (res.ok) {
+      const file = await res.json();
+      lastSha = file.sha;
+    }
   }
 
-  // --- Spara schema ---
-  function saveTimetable() {
-    const data = {};
-    grids.forEach(grid => {
-      const boxes = grid.querySelectorAll(".box");
-      const id = grid.id.replace("grid-", "");
-      data[id] = Array.from(boxes).map(b => ({
-        text: b.textContent.trim(),
-        top: parseInt(b.style.top),
-        height: parseInt(b.style.height),
-        track: Math.round(parseFloat(b.style.left) / trackWidth),
-		color: b.style.background
-      }));
+  const body = {
+    message: "Update timetable",
+    content: btoa(data),
+    sha: lastSha
+  };
+
+  try {
+    const res = await fetch(url, {
+      method: "PUT",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(body)
     });
-    localStorage.setItem("timetableDataV3", JSON.stringify(data));
-	updateDeletePanel();
+
+    const result = await res.json();
+    lastSha = result.content.sha;
+
+    document.getElementById("githubStatus").textContent = "Sparat!";
+    document.getElementById("lastSaved").textContent = "Senast sparad: " + new Date().toLocaleString();
+
+  } catch (err) {
+    console.error(err);
+    document.getElementById("githubStatus").textContent = "Fel vid sparning.";
   }
+}
+
+document.getElementById("saveToGitHubBtn").onclick = saveToGitHub;
+document.getElementById("loadFromGitHubBtn").onclick = loadFromGitHub;
 </script>
 
 </body>

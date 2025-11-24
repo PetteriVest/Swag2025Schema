@@ -40,6 +40,7 @@
     height: 960px; /* 16 timmar (08–24) à 60px */
     border-left: 1px solid #ccc;
     margin-top: 10px;
+    overflow: hidden;
   }
   .time-label {
     position: absolute;
@@ -61,6 +62,7 @@
     overflow: hidden;
     user-select: none;
     width: 24%;
+    box-sizing: border-box;
   }
   .box:active {
     cursor: grabbing;
@@ -134,10 +136,19 @@
   }
 
   #lastSaved {
-    margin-top: 5px;
+    margin-top: 8px;
     font-size: 14px;
     color: #777;
   }
+
+  .small {
+    font-size: 13px;
+    color: #666;
+    margin-top: 6px;
+  }
+
+  input[type="password"] { box-sizing:border-box; }
+  button.smallBtn { padding:6px 8px; border-radius:6px; border:0; cursor:pointer; }
 </style>
 </head>
 <body>
@@ -168,10 +179,15 @@
 <div id="syncPanel">
   <h3>GitHub-synk</h3>
 
-  <label>GitHub Token:</label>
-  <input id="githubToken" type="password" placeholder="Klistra in token" style="width:100%;padding:6px;margin-bottom:10px;">
+  <label for="githubToken">GitHub Token:</label>
+  <input id="githubToken" type="password" placeholder="Klistra in token" style="width:100%;padding:6px;margin-bottom:8px;">
 
-  <button id="saveToGitHubBtn" style="width:100%;padding:10px;background:#4c9aff;color:white;border:none;border-radius:8px;cursor:pointer;">
+  <div style="display:flex;gap:8px;">
+    <button id="saveTokenBtn" class="smallBtn" style="background:#4c9aff;color:white;flex:1">Spara token</button>
+    <button id="clearTokenBtn" class="smallBtn" style="background:#e74c3c;color:white;flex:1">Radera token</button>
+  </div>
+
+  <button id="saveToGitHubBtn" style="width:100%;padding:10px;background:#4c9aff;color:white;border:none;border-radius:8px;cursor:pointer;margin-top:10px;">
     Spara till GitHub
   </button>
 
@@ -181,19 +197,19 @@
 
   <div id="githubStatus" style="margin-top:10px;color:#555;font-size:14px;"></div>
   <div id="lastSaved">Senast sparad: –</div>
+  <div class="small">Token sparas lokalt i din webbläsare (localStorage).</div>
 </div>
 
 <script>
-/* ---------------------------------------------------------
-   DINA BEFINTLIGA VARIABLER & FUNKTIONER
---------------------------------------------------------- */
-
+/* ---------------------------
+   Din ursprungliga kod (bevarad)
+   --------------------------- */
 const grids = document.querySelectorAll(".time-grid");
 const startHour = 8;
 const hourHeight = 60;
 const trackWidth = 25;
 
-/* ----- Rita tidsskala ----- */
+/* Rita tidsskala */
 grids.forEach(grid => {
   for (let h = startHour; h <= 24; h++) {
     const label = document.createElement("div");
@@ -213,11 +229,16 @@ grids.forEach(grid => {
   }
 });
 
-/* ----- Ladda från localStorage ----- */
+/* Ladda från localStorage */
 document.addEventListener("DOMContentLoaded", () => {
+  // fyll token-input från localStorage om sparad
+  const storedToken = localStorage.getItem("GH_TOKEN");
+  if (storedToken) document.getElementById("githubToken").value = storedToken;
+
   const saved = JSON.parse(localStorage.getItem("timetableDataV3") || "{}");
   Object.keys(saved).forEach(day => {
     const grid = document.getElementById(`grid-${day}`);
+    if (!grid) return;
     saved[day].forEach(item => {
       const newBox = createBox(item.text, item.top, item.height, item.track, item.color);
       grid.appendChild(newBox);
@@ -226,7 +247,7 @@ document.addEventListener("DOMContentLoaded", () => {
   updateDeletePanel();
 });
 
-/* ----- Skapa box ----- */
+/* Skapa box */
 function createBox(text, top = 0, height = 60, track = 0, color = null) {
   const box = document.createElement("div");
   box.classList.add("box");
@@ -248,7 +269,7 @@ function createBox(text, top = 0, height = 60, track = 0, color = null) {
   return box;
 }
 
-/* ----- Radera panel ----- */
+/* Radera panel */
 function updateDeletePanel() {
   const deleteList = document.getElementById("deleteList");
   deleteList.innerHTML = "";
@@ -269,7 +290,7 @@ function updateDeletePanel() {
   });
 }
 
-/* ----- Lägga till nya boxar ----- */
+/* Lägga till nya boxar */
 document.querySelector(".externBtn").onclick = () => addNewBox("Extern aktivitet", "#2ecc71");
 document.querySelector(".workshopBtn").onclick = () => addNewBox("Workshop", "#e67e22");
 document.querySelector(".forelasningBtn").onclick = () => addNewBox("Föreläsning", "#9b59b6");
@@ -283,7 +304,7 @@ function addNewBox(text, color) {
   updateDeletePanel();
 }
 
-/* ----- Drag ----- */
+/* Drag */
 function addDragEvents(box) {
   let offsetY = 0, offsetX = 0;
 
@@ -323,7 +344,7 @@ grids.forEach(grid => {
   grid.addEventListener("drop", () => saveTimetable());
 });
 
-/* ----- Resize ----- */
+/* Resize */
 function addResizeEvents(box, handle) {
   let isResizing = false;
   let startY, startHeight;
@@ -352,7 +373,7 @@ function addResizeEvents(box, handle) {
   });
 }
 
-/* ----- Edit ----- */
+/* Edit */
 function addEditEvents(box) {
   box.addEventListener("dblclick", () => {
     const oldText = box.textContent.replace(/\s+$/, "");
@@ -377,7 +398,7 @@ function addEditEvents(box) {
   });
 }
 
-/* ----- Save to localStorage ----- */
+/* Save to localStorage */
 function saveTimetable() {
   const data = {};
   grids.forEach(grid => {
@@ -385,51 +406,87 @@ function saveTimetable() {
     const id = grid.id.replace("grid-", "");
     data[id] = Array.from(boxes).map(b => ({
       text: b.textContent.trim(),
-      top: parseInt(b.style.top),
-      height: parseInt(b.style.height),
+      top: parseInt(b.style.top) || 0,
+      height: parseInt(b.style.height) || 60,
       track: Math.round(parseFloat(b.style.left) / trackWidth),
-      color: b.style.background
+      color: b.style.background || ""
     }));
   });
   localStorage.setItem("timetableDataV3", JSON.stringify(data));
 }
 
-/* ---------------------------------------------------------
-   GITHUB SYNC
---------------------------------------------------------- */
+/* ---------------------------
+   GITHUB SYNC (localStorage token)
+   --------------------------- */
 const GITHUB_USER = "PetteriVest";
 const GITHUB_REPO = "Swag2025Schema";
-const GITHUB_FILE = "data.json";
+const GITHUB_FILE = "timetable.json"; // enligt önskemål
+const COMMIT_MESSAGE = "Auto-sync from webapp";
 
 let lastSha = null;
 
-/* ---- Load from GitHub ---- */
-async function loadFromGitHub() {
-  const token = document.getElementById("githubToken").value.trim();
-  if (!token) return alert("Du måste ange token.");
+/* Hjälp: byt statustext */
+function setStatus(text) {
+  document.getElementById("githubStatus").textContent = text;
+}
 
-  document.getElementById("githubStatus").textContent = "Laddar...";
+/* Läs token (från input eller localStorage) */
+function getToken() {
+  const input = document.getElementById("githubToken").value.trim();
+  if (input) return input;
+  return localStorage.getItem("GH_TOKEN") || "";
+}
+
+/* Spara token i localStorage via knapp */
+document.getElementById("saveTokenBtn").addEventListener("click", () => {
+  const val = document.getElementById("githubToken").value.trim();
+  if (!val) return alert("Klistra in token i fältet först.");
+  localStorage.setItem("GH_TOKEN", val);
+  setStatus("Token sparad lokalt.");
+});
+
+/* Radera token */
+document.getElementById("clearTokenBtn").addEventListener("click", () => {
+  localStorage.removeItem("GH_TOKEN");
+  document.getElementById("githubToken").value = "";
+  setStatus("Token raderad.");
+});
+
+/* ---- Load från GitHub ---- */
+async function loadFromGitHub() {
+  const token = getToken();
+  if (!token) return alert("Du måste ange token (eller spara i localStorage).");
+
+  setStatus("Laddar från GitHub...");
   const url = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${GITHUB_FILE}`;
 
   try {
-    const res = await fetch(url, { headers: { Authorization: `Bearer ${token}` } });
+    const res = await fetch(url, {
+      headers: { Authorization: `Bearer ${token}` }
+    });
 
     if (res.status === 404) {
-      document.getElementById("githubStatus").textContent = "Filen finns inte på GitHub.";
+      setStatus("Filen hittades inte i repot.");
       return;
+    }
+    if (!res.ok) {
+      const txt = await res.text();
+      throw new Error("HTTP " + res.status + " " + txt);
     }
 
     const file = await res.json();
     lastSha = file.sha;
 
-    const decoded = JSON.parse(atob(file.content));
+    // decode content
+    const decoded = JSON.parse(atob(file.content.replace(/\n/g, '')));
 
+    // rensa och rendera
     grids.forEach(g => g.innerHTML = "");
-
     localStorage.setItem("timetableDataV3", JSON.stringify(decoded));
 
     Object.keys(decoded).forEach(day => {
       const grid = document.getElementById(`grid-${day}`);
+      if (!grid) return;
       decoded[day].forEach(item => {
         const box = createBox(item.text, item.top, item.height, item.track, item.color);
         grid.appendChild(box);
@@ -437,42 +494,47 @@ async function loadFromGitHub() {
     });
 
     updateDeletePanel();
-
-    document.getElementById("githubStatus").textContent = "Data laddad!";
-    document.getElementById("lastSaved").textContent = "Senast sparad: Hämtad från GitHub";
+    setStatus("Data laddad från GitHub.");
+    document.getElementById("lastSaved").textContent = "Senast sparad: Hämtad från GitHub " + new Date().toLocaleString();
 
   } catch (err) {
     console.error(err);
-    document.getElementById("githubStatus").textContent = "Fel vid laddning.";
+    setStatus("Fel vid laddning: " + (err.message || err));
   }
 }
 
 /* ---- Save to GitHub ---- */
 async function saveToGitHub() {
-  const token = document.getElementById("githubToken").value.trim();
-  if (!token) return alert("Du måste ange token.");
+  const token = getToken();
+  if (!token) return alert("Du måste ange token (eller spara i localStorage).");
 
-  document.getElementById("githubStatus").textContent = "Sparar...";
+  setStatus("Sparar till GitHub...");
 
-  const data = JSON.stringify(JSON.parse(localStorage.getItem("timetableDataV3") || "{}"), null, 2);
+  // ta data från localStorage (samma format som vi sparar lokalt)
+  const dataObj = JSON.parse(localStorage.getItem("timetableDataV3") || "{}");
+  const dataStr = JSON.stringify(dataObj, null, 2);
   const url = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${GITHUB_FILE}`;
 
-  if (!lastSha) {
-    const res = await fetch(url, { headers: { Authorization: `Bearer ${token}` } });
-    if (res.ok) {
-      const file = await res.json();
-      lastSha = file.sha;
-    }
-  }
-
-  const body = {
-    message: "Update timetable",
-    content: btoa(data),
-    sha: lastSha
-  };
-
   try {
-    const res = await fetch(url, {
+    // hämta senaste sha om vi inte redan har
+    if (!lastSha) {
+      const headRes = await fetch(url, { headers: { Authorization: `Bearer ${token}` } });
+      if (headRes.ok) {
+        const headFile = await headRes.json();
+        lastSha = headFile.sha;
+      } else if (headRes.status !== 404) {
+        const txt = await headRes.text();
+        throw new Error("Fel vid läsning av filmetadata: " + headRes.status + " " + txt);
+      }
+    }
+
+    const body = {
+      message: COMMIT_MESSAGE,
+      content: btoa(unescape(encodeURIComponent(dataStr)))
+    };
+    if (lastSha) body.sha = lastSha;
+
+    const putRes = await fetch(url, {
       method: "PUT",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -481,20 +543,32 @@ async function saveToGitHub() {
       body: JSON.stringify(body)
     });
 
-    const result = await res.json();
+    if (!putRes.ok) {
+      const txt = await putRes.text();
+      throw new Error("PUT misslyckades: " + putRes.status + " " + txt);
+    }
+
+    const result = await putRes.json();
     lastSha = result.content.sha;
 
-    document.getElementById("githubStatus").textContent = "Sparat!";
-    document.getElementById("lastSaved").textContent = "Senast sparad: " + new Date().toLocaleString();
+    setStatus("Sparat till GitHub.");
+    const now = new Date();
+    document.getElementById("lastSaved").textContent = "Senast sparad: " + now.toLocaleString();
 
   } catch (err) {
     console.error(err);
-    document.getElementById("githubStatus").textContent = "Fel vid sparning.";
+    setStatus("Fel vid sparning: " + (err.message || err));
   }
 }
 
-document.getElementById("saveToGitHubBtn").onclick = saveToGitHub;
-document.getElementById("loadFromGitHubBtn").onclick = loadFromGitHub;
+/* Koppla knappar */
+document.getElementById("saveToGitHubBtn").addEventListener("click", () => {
+  // se till att lokal data är uppdaterad innan push
+  saveTimetable();
+  saveToGitHub();
+});
+document.getElementById("loadFromGitHubBtn").addEventListener("click", loadFromGitHub);
+
 </script>
 
 </body>

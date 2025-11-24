@@ -1,1 +1,21 @@
-{}
+{
+  "thursday": [
+    {
+      "text": "Extern aktivitet",
+      "top": 0,
+      "height": 60,
+      "track": 0,
+      "color": "rgb(46, 204, 113)"
+    },
+    {
+      "text": "Föreläsning",
+      "top": 0,
+      "height": 60,
+      "track": 0,
+      "color": "rgb(155, 89, 182)"
+    }
+  ],
+  "friday": [],
+  "saturday": [],
+  "sunday": []
+}

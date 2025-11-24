@@ -1,1 +1,205 @@
-{"thursday":[{"text":"Fotomaraton","top":59,"height":30,"track":2,"color":"rgb(76, 154, 255)"},{"text":"Two rooms and a boom (Social deduction)","top":781,"height":83,"track":0,"color":"rgb(76, 154, 255)"},{"text":"Yoga - lugn, meditativ","top":0,"height":49,"track":1,"color":"rgb(76, 154, 255)"},{"text":"Bokcirkel","top":721,"height":108,"track":2,"color":"rgb(230, 126, 34)"},{"text":"Kort om Nordiska Mensastiftelsen","top":600,"height":47,"track":2,"color":"rgb(155, 89, 182)"},{"text":"Ja tack, hjärna!","top":179,"height":48,"track":1,"color":"rgb(155, 89, 182)"},{"text":"Escape Room","top":234,"height":302,"track":0,"color":"rgb(46, 204, 113)"},{"text":"Ungdom - Middag","top":300,"height":108,"track":3,"color":"pink"},{"text":"Äventyrsbadet","top":720,"height":108,"track":3,"color":"rgb(76, 154, 255)"}],"friday":[{"text":"Two rooms and a boom (Social deduction)","top":779,"height":85,"track":0,"color":"rgb(76, 154, 255)"},{"text":"Yoga - fysiskt utmanande","top":0,"height":60,"track":1,"color":"rgb(76, 154, 255)"},{"text":"M-quiz","top":659,"height":60,"track":0,"color":"rgb(76, 154, 255)"},{"text":"Träning och hälsoforum","top":122,"height":60,"track":1,"color":"rgb(155, 89, 182)"},{"text":"Novellekar - kreativt skrivande","top":661,"height":60,"track":2,"color":"rgb(230, 126, 34)"},{"text":"Qigong utomhus","top":121,"height":60,"track":2,"color":"rgb(76, 154, 255)"},{"text":"Shibari","top":300,"height":108,"track":2,"color":"rgb(230, 126, 34)"},{"text":"Escape Room","top":231,"height":305,"track":0,"color":"rgb(46, 204, 113)"},{"text":"Ölprovning Elite","top":360,"height":107,"track":1,"color":"rgb(46, 204, 113)"},{"text":"Ungdom - Höghöjdsbana","top":300,"height":111,"track":3,"color":"rgb(46, 204, 113)"},{"text":"Maskerad","top":780,"height":170,"track":3,"color":"pink"}],"saturday":[{"text":"Jungiansk Symbolik & Associationer","top":0,"height":60,"track":2,"color":"rgb(155, 89, 182)"},{"text":"Fotomaraton redovisning/prisutdelning","top":441,"height":60,"track":1,"color":"rgb(76, 154, 255)"},{"text":"Two rooms and a boom (Social deduction)","top":780,"height":82,"track":0,"color":"rgb(76, 154, 255)"},{"text":"Escape Room","top":229,"height":308,"track":0,"color":"rgb(46, 204, 113)"},{"text":"Ölprovning Elite","top":360,"height":108,"track":2,"color":"rgb(46, 204, 113)"},{"text":"Ungdom - Prison Island","top":300,"height":108,"track":3,"color":"rgb(46, 204, 113)"},{"text":"Årsmöte","top":119,"height":289,"track":1,"color":"rgb(155, 89, 182)"},{"text":"Festmiddag","top":660,"height":167,"track":2,"color":"pink"}],"sunday":[]}
+{
+  "thursday": [
+    {
+      "text": "Fotomaraton",
+      "top": 59,
+      "height": 30,
+      "track": 2,
+      "color": "rgb(76, 154, 255)"
+    },
+    {
+      "text": "Two rooms and a boom (Social deduction)",
+      "top": 781,
+      "height": 83,
+      "track": 0,
+      "color": "rgb(76, 154, 255)"
+    },
+    {
+      "text": "Yoga - lugn, meditativ",
+      "top": 0,
+      "height": 49,
+      "track": 1,
+      "color": "rgb(76, 154, 255)"
+    },
+    {
+      "text": "Bokcirkel",
+      "top": 721,
+      "height": 108,
+      "track": 2,
+      "color": "rgb(230, 126, 34)"
+    },
+    {
+      "text": "Kort om Nordiska Mensastiftelsen",
+      "top": 600,
+      "height": 47,
+      "track": 2,
+      "color": "rgb(155, 89, 182)"
+    },
+    {
+      "text": "Ja tack, hjärna!",
+      "top": 179,
+      "height": 48,
+      "track": 1,
+      "color": "rgb(155, 89, 182)"
+    },
+    {
+      "text": "Escape Room",
+      "top": 234,
+      "height": 302,
+      "track": 0,
+      "color": "rgb(46, 204, 113)"
+    },
+    {
+      "text": "Ungdom - Middag",
+      "top": 300,
+      "height": 108,
+      "track": 3,
+      "color": "pink"
+    },
+    {
+      "text": "Äventyrsbadet",
+      "top": 720,
+      "height": 108,
+      "track": 3,
+      "color": "rgb(76, 154, 255)"
+    }
+  ],
+  "friday": [
+    {
+      "text": "Two rooms and a boom (Social deduction)",
+      "top": 779,
+      "height": 85,
+      "track": 0,
+      "color": "rgb(76, 154, 255)"
+    },
+    {
+      "text": "Yoga - fysiskt utmanande",
+      "top": 0,
+      "height": 60,
+      "track": 1,
+      "color": "rgb(76, 154, 255)"
+    },
+    {
+      "text": "M-quiz",
+      "top": 659,
+      "height": 60,
+      "track": 0,
+      "color": "rgb(76, 154, 255)"
+    },
+    {
+      "text": "Träning och hälsoforum",
+      "top": 122,
+      "height": 60,
+      "track": 1,
+      "color": "rgb(155, 89, 182)"
+    },
+    {
+      "text": "Novellekar - kreativt skrivande",
+      "top": 661,
+      "height": 60,
+      "track": 2,
+      "color": "rgb(230, 126, 34)"
+    },
+    {
+      "text": "Qigong utomhus",
+      "top": 121,
+      "height": 60,
+      "track": 2,
+      "color": "rgb(76, 154, 255)"
+    },
+    {
+      "text": "Shibari",
+      "top": 300,
+      "height": 108,
+      "track": 2,
+      "color": "rgb(230, 126, 34)"
+    },
+    {
+      "text": "Escape Room",
+      "top": 231,
+      "height": 305,
+      "track": 0,
+      "color": "rgb(46, 204, 113)"
+    },
+    {
+      "text": "Ölprovning Elite",
+      "top": 360,
+      "height": 107,
+      "track": 1,
+      "color": "rgb(46, 204, 113)"
+    },
+    {
+      "text": "Ungdom - Höghöjdsbana",
+      "top": 300,
+      "height": 111,
+      "track": 3,
+      "color": "rgb(46, 204, 113)"
+    },
+    {
+      "text": "Maskerad",
+      "top": 780,
+      "height": 170,
+      "track": 3,
+      "color": "pink"
+    }
+  ],
+  "saturday": [
+    {
+      "text": "Jungiansk Symbolik & Associationer",
+      "top": 0,
+      "height": 60,
+      "track": 2,
+      "color": "rgb(155, 89, 182)"
+    },
+    {
+      "text": "Fotomaraton redovisning/prisutdelning",
+      "top": 441,
+      "height": 60,
+      "track": 1,
+      "color": "rgb(76, 154, 255)"
+    },
+    {
+      "text": "Two rooms and a boom (Social deduction)",
+      "top": 780,
+      "height": 82,
+      "track": 0,
+      "color": "rgb(76, 154, 255)"
+    },
+    {
+      "text": "Escape Room",
+      "top": 229,
+      "height": 308,
+      "track": 0,
+      "color": "rgb(46, 204, 113)"
+    },
+    {
+      "text": "Ölprovning Elite",
+      "top": 360,
+      "height": 108,
+      "track": 2,
+      "color": "rgb(46, 204, 113)"
+    },
+    {
+      "text": "Ungdom - Prison Island",
+      "top": 300,
+      "height": 108,
+      "track": 3,
+      "color": "rgb(46, 204, 113)"
+    },
+    {
+      "text": "Årsmöte",
+      "top": 119,
+      "height": 289,
+      "track": 1,
+      "color": "rgb(155, 89, 182)"
+    },
+    {
+      "text": "Festmiddag",
+      "top": 660,
+      "height": 167,
+      "track": 2,
+      "color": "pink"
+    }
+  ],
+  "sunday": []
+}

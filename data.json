@@ -31,7 +31,7 @@
     {
       "text": "Kort om Nordiska Mensastiftelsen",
       "top": 600,
-      "height": 47,
+      "height": 56,
       "track": 2,
       "color": "rgb(155, 89, 182)"
     },
@@ -57,7 +57,7 @@
       "color": "pink"
     },
     {
-      "text": "Ãventyrsbadet",
+      "text": "Äventyrsbadet",
       "top": 720,
       "height": 108,
       "track": 3,
@@ -77,13 +77,6 @@
       "top": 0,
       "height": 60,
       "track": 1,
-      "color": "rgb(76, 154, 255)"
-    },
-    {
-      "text": "M-quiz",
-      "top": 659,
-      "height": 60,
-      "track": 0,
       "color": "rgb(76, 154, 255)"
     },
     {
@@ -122,7 +115,7 @@
       "color": "rgb(46, 204, 113)"
     },
     {
-      "text": "Ölprovning Elite",
+      "text": "Ölprovning Elite",
       "top": 360,
       "height": 107,
       "track": 1,
@@ -136,11 +129,18 @@
       "color": "rgb(46, 204, 113)"
     },
     {
-      "text": "Maskerad",
-      "top": 780,
-      "height": 170,
-      "track": 3,
+      "text": "Maskerad, Openstage, Quiz",
+      "top": 808,
+      "height": 168,
+      "track": 1,
       "color": "pink"
+    },
+    {
+      "text": "M-Quiz",
+      "top": 721,
+      "height": 60,
+      "track": 0,
+      "color": "rgb(76, 154, 255)"
     }
   ],
   "saturday": [
@@ -153,7 +153,7 @@
     },
     {
       "text": "Fotomaraton redovisning/prisutdelning",
-      "top": 441,
+      "top": 504,
       "height": 60,
       "track": 1,
       "color": "rgb(76, 154, 255)"
@@ -188,8 +188,8 @@
     },
     {
       "text": "Årsmöte",
-      "top": 119,
-      "height": 289,
+      "top": 301,
+      "height": 179,
       "track": 1,
       "color": "rgb(155, 89, 182)"
     },

@@ -23,9 +23,9 @@
     },
     {
       "text": "Bokcirkel",
-      "top": 721,
+      "top": 624,
       "height": 108,
-      "track": 2,
+      "track": 1,
       "color": "rgb(230, 126, 34)"
     },
     {
@@ -36,7 +36,7 @@
       "color": "rgb(155, 89, 182)"
     },
     {
-      "text": "Ja tack, hjÃ¤rna!",
+      "text": "Ja tack, hjÃÂ¤rna!",
       "top": 179,
       "height": 48,
       "track": 1,
@@ -50,18 +50,39 @@
       "color": "rgb(46, 204, 113)"
     },
     {
-      "text": "Ungdom - Middag",
+      "text": "Ungdom - Meet & Greet",
       "top": 300,
       "height": 108,
       "track": 3,
       "color": "pink"
     },
     {
-      "text": "Ãventyrsbadet",
+      "text": "ÃÂventyrsbadet",
       "top": 720,
       "height": 177,
       "track": 3,
       "color": "rgb(76, 154, 255)"
+    },
+    {
+      "text": "Invigning",
+      "top": 480,
+      "height": 98,
+      "track": 1,
+      "color": "rgb(76, 154, 255)"
+    },
+    {
+      "text": "Tommy Ryhov",
+      "top": 180,
+      "height": 60,
+      "track": 2,
+      "color": "rgb(46, 204, 113)"
+    },
+    {
+      "text": "Räddningstjänst",
+      "top": 327,
+      "height": 60,
+      "track": 1,
+      "color": "rgb(46, 204, 113)"
     }
   ],
   "friday": [
@@ -80,7 +101,7 @@
       "color": "rgb(76, 154, 255)"
     },
     {
-      "text": "TrÃ¤ning och hÃ¤lsoforum",
+      "text": "TrÃÂ¤ning och hÃÂ¤lsoforum",
       "top": 122,
       "height": 60,
       "track": 1,
@@ -115,14 +136,14 @@
       "color": "rgb(46, 204, 113)"
     },
     {
-      "text": "Ãlprovning Elite",
+      "text": "ÃÂlprovning Elite",
       "top": 360,
       "height": 107,
       "track": 1,
       "color": "rgb(46, 204, 113)"
     },
     {
-      "text": "Ungdom - HÃ¶ghÃ¶jdsbana",
+      "text": "Ungdom - HÃÂ¶ghÃÂ¶jdsbana",
       "top": 300,
       "height": 111,
       "track": 3,
@@ -173,7 +194,7 @@
       "color": "rgb(46, 204, 113)"
     },
     {
-      "text": "Ãlprovning Elite",
+      "text": "ÃÂlprovning Elite",
       "top": 360,
       "height": 108,
       "track": 2,
@@ -187,7 +208,7 @@
       "color": "rgb(46, 204, 113)"
     },
     {
-      "text": "ÃrsmÃ¶te",
+      "text": "ÃÂrsmÃÂ¶te",
       "top": 301,
       "height": 179,
       "track": 1,

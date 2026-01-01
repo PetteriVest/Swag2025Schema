@@ -222,5 +222,20 @@
       "color": "pink"
     }
   ],
-  "sunday": []
+  "sunday": [
+    {
+      "text": "Varulv",
+      "top": 84,
+      "height": 60,
+      "track": 0,
+      "color": "rgb(230, 126, 34)"
+    },
+    {
+      "text": "Ny på SWAG",
+      "top": 155,
+      "height": 60,
+      "track": 0,
+      "color": "rgb(230, 126, 34)"
+    }
+  ]
 }

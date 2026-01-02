@@ -83,6 +83,20 @@
       "height": 60,
       "track": 1,
       "color": "rgb(46, 204, 113)"
+    },
+    {
+      "text": "Ny på SWAG",
+      "top": 300,
+      "height": 60,
+      "track": 2,
+      "color": "rgb(230, 126, 34)"
+    },
+    {
+      "text": "Bowling",
+      "top": 405,
+      "height": 60,
+      "track": 3,
+      "color": "rgb(46, 204, 113)"
     }
   ],
   "friday": [
@@ -116,7 +130,7 @@
     },
     {
       "text": "Qigong utomhus",
-      "top": 121,
+      "top": 147,
       "height": 60,
       "track": 2,
       "color": "rgb(76, 154, 255)"
@@ -127,13 +141,6 @@
       "height": 108,
       "track": 2,
       "color": "rgb(230, 126, 34)"
-    },
-    {
-      "text": "Escape Room",
-      "top": 231,
-      "height": 305,
-      "track": 0,
-      "color": "rgb(46, 204, 113)"
     },
     {
       "text": "ÃÂlprovning Elite",
@@ -162,6 +169,20 @@
       "height": 60,
       "track": 1,
       "color": "rgb(76, 154, 255)"
+    },
+    {
+      "text": "Ny p[ SWAG",
+      "top": 59,
+      "height": 60,
+      "track": 3,
+      "color": "rgb(230, 126, 34)"
+    },
+    {
+      "text": "Escape Room",
+      "top": 235,
+      "height": 305,
+      "track": 0,
+      "color": "rgb(46, 204, 113)"
     }
   ],
   "saturday": [
@@ -224,18 +245,11 @@
   ],
   "sunday": [
     {
-      "text": "Varulv",
-      "top": 84,
-      "height": 60,
+      "text": "Ungdom Avslutsmingel",
+      "top": 111,
+      "height": 246,
       "track": 0,
-      "color": "rgb(230, 126, 34)"
-    },
-    {
-      "text": "Ny på SWAG",
-      "top": 155,
-      "height": 60,
-      "track": 0,
-      "color": "rgb(230, 126, 34)"
+      "color": "pink"
     }
   ]
 }

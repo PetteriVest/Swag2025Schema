@@ -23,21 +23,14 @@
     },
     {
       "text": "Bokcirkel",
-      "top": 624,
+      "top": 388,
       "height": 108,
-      "track": 1,
+      "track": 2,
       "color": "rgb(230, 126, 34)"
     },
     {
-      "text": "Kort om Nordiska Mensastiftelsen",
-      "top": 600,
-      "height": 56,
-      "track": 2,
-      "color": "rgb(155, 89, 182)"
-    },
-    {
       "text": "Ja tack, hjÃÂ¤rna!",
-      "top": 179,
+      "top": 121,
       "height": 48,
       "track": 1,
       "color": "rgb(155, 89, 182)"
@@ -58,15 +51,15 @@
     },
     {
       "text": "ÃÂventyrsbadet",
-      "top": 720,
-      "height": 177,
+      "top": 779,
+      "height": 180,
       "track": 3,
       "color": "rgb(76, 154, 255)"
     },
     {
       "text": "Invigning",
-      "top": 480,
-      "height": 98,
+      "top": 541,
+      "height": 62,
       "track": 1,
       "color": "rgb(76, 154, 255)"
     },
@@ -104,6 +97,27 @@
       "height": 96,
       "track": 0,
       "color": "pink"
+    },
+    {
+      "text": "Kort om Nordiska Mensastiftelsen",
+      "top": 244,
+      "height": 56,
+      "track": 1,
+      "color": "rgb(155, 89, 182)"
+    },
+    {
+      "text": "Invigningsmingel",
+      "top": 505,
+      "height": 36,
+      "track": 1,
+      "color": "rgb(76, 154, 255)"
+    },
+    {
+      "text": "Fotografering",
+      "top": 603,
+      "height": 30,
+      "track": 1,
+      "color": "rgb(76, 154, 255)"
     }
   ],
   "friday": [
@@ -130,9 +144,9 @@
     },
     {
       "text": "Novellekar - kreativt skrivande",
-      "top": 661,
+      "top": 510,
       "height": 60,
-      "track": 2,
+      "track": 1,
       "color": "rgb(230, 126, 34)"
     },
     {
@@ -171,13 +185,6 @@
       "color": "pink"
     },
     {
-      "text": "M-Quiz",
-      "top": 720,
-      "height": 60,
-      "track": 1,
-      "color": "rgb(76, 154, 255)"
-    },
-    {
       "text": "Ny p[ SWAG",
       "top": 59,
       "height": 60,
@@ -197,6 +204,20 @@
       "height": 94,
       "track": 0,
       "color": "pink"
+    },
+    {
+      "text": "Musik Quiz",
+      "top": 718,
+      "height": 60,
+      "track": 2,
+      "color": "rgb(76, 154, 255)"
+    },
+    {
+      "text": "M-Quiz",
+      "top": 576,
+      "height": 60,
+      "track": 2,
+      "color": "rgb(76, 154, 255)"
     }
   ],
   "saturday": [
@@ -253,6 +274,20 @@
       "text": "Festmiddag",
       "top": 660,
       "height": 167,
+      "track": 2,
+      "color": "pink"
+    },
+    {
+      "text": "Mingel",
+      "top": 599,
+      "height": 60,
+      "track": 2,
+      "color": "pink"
+    },
+    {
+      "text": "Dans och party",
+      "top": 839,
+      "height": 137,
       "track": 2,
       "color": "pink"
     }

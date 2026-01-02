@@ -97,6 +97,13 @@
       "height": 60,
       "track": 3,
       "color": "rgb(46, 204, 113)"
+    },
+    {
+      "text": "Middag",
+      "top": 660,
+      "height": 96,
+      "track": 0,
+      "color": "pink"
     }
   ],
   "friday": [
@@ -183,6 +190,13 @@
       "height": 305,
       "track": 0,
       "color": "rgb(46, 204, 113)"
+    },
+    {
+      "text": "Middag",
+      "top": 662,
+      "height": 94,
+      "track": 0,
+      "color": "pink"
     }
   ],
   "saturday": [
@@ -230,8 +244,8 @@
     },
     {
       "text": "ÃÂrsmÃÂ¶te",
-      "top": 301,
-      "height": 179,
+      "top": 122,
+      "height": 240,
       "track": 1,
       "color": "rgb(155, 89, 182)"
     },

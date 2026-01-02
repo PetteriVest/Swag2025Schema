@@ -71,13 +71,6 @@
       "color": "rgb(46, 204, 113)"
     },
     {
-      "text": "Räddningstjänst",
-      "top": 327,
-      "height": 60,
-      "track": 1,
-      "color": "rgb(46, 204, 113)"
-    },
-    {
       "text": "Ny på SWAG",
       "top": 300,
       "height": 60,
@@ -117,6 +110,13 @@
       "top": 603,
       "height": 30,
       "track": 1,
+      "color": "rgb(76, 154, 255)"
+    },
+    {
+      "text": "Funktion'rs kickoff",
+      "top": 28,
+      "height": 60,
+      "track": 3,
       "color": "rgb(76, 154, 255)"
     }
   ],
@@ -218,6 +218,13 @@
       "height": 60,
       "track": 2,
       "color": "rgb(76, 154, 255)"
+    },
+    {
+      "text": "Räddningstjänst",
+      "top": 236,
+      "height": 60,
+      "track": 1,
+      "color": "rgb(46, 204, 113)"
     }
   ],
   "saturday": [
